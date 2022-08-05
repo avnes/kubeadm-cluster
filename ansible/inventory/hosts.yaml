@@ -1,0 +1,4 @@
+all:
+  hosts:
+    kubeadm-ctrl01:
+    kubeadm-node01:
