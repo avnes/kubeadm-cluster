@@ -51,7 +51,7 @@ sudo sh -c "KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes -A -o wide"
 
 
 # On worker node
-kubeadm join 192.168.122.252:6443 --token 8tuguy.savbnjcjdyldjg41 \
-        --discovery-token-ca-cert-hash sha256:6ee8580af1cb100699aea858f941aeb094008e43274a38b900dcb6d9a9534bfa
+kubeadm join 192.168.122.189:6443 --token sf3ad4.5reruio87setzc25 \
+        --discovery-token-ca-cert-hash sha256:9d476ffc8cd6553dc8223db8113d9b94f7fc3a8e58cb120a9acf5a39bfa6d94b
 
 ```
