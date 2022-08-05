@@ -3,6 +3,11 @@
 
 ```bash
 sudo apt update
+sudo apt install -y openssh-server
+
+sudo systemctl enable sshd
+sudo systemctl start sshd
+
 sudo apt install -y containerd apt-transport-https ca-certificates curl
 
 sudo modprobe overlay
