@@ -1,4 +1,4 @@
-# Test kubeadm on Ubuntu
+# Test kubeadm on Ubuntu Server
 
 
 ```bash
@@ -54,4 +54,18 @@ sudo sh -c "KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes -A -o wide"
 sudo kubeadm join 192.168.122.189:6443 --token sf3ad4.5reruio87setzc25 \
         --discovery-token-ca-cert-hash sha256:9d476ffc8cd6553dc8223db8113d9b94f7fc3a8e58cb120a9acf5a39bfa6d94b
 
+```
+
+## Remove kubeadm
+
+```bash
+
+# On worker node:
+
+sudo kubeadm reset
+
+
+# On controlplane:
+
+sudo kubeadm reset
 ```
