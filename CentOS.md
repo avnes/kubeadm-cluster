@@ -66,7 +66,21 @@ sudo kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address
 
 # On worker node:
 
-kubeadm join 192.168.122.214:6443 --token pif8ga.r7fph75gtmt5q3o2 \
+sudo kubeadm join 192.168.122.214:6443 --token pif8ga.r7fph75gtmt5q3o2 \
         --discovery-token-ca-cert-hash sha256:9e1693d46407d8ac60d2e93933c47528af8de624347fe39cf34a861ab3d16f0e
 
+```
+
+## Remove kubeadm
+
+```bash
+
+# On worker node:
+
+sudo kubeadm reset
+
+
+# On controlplane:
+
+sudo kubeadm reset
 ```
