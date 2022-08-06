@@ -27,6 +27,8 @@ sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
+# On CentOS Stream 8: dnf remove -y podman
+
 sudo dnf install -y containerd.io
 
 sudo mkdir -p /etc/containerd
@@ -60,14 +62,19 @@ rm -f crictl-$VERSION-linux-amd64.tar.gz
 
 
 # On controlplane:
-sudo su -
-sudo kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address=192.168.122.214 --ignore-preflight-errors 'NumCPU'
+sudo kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address=192.168.122.29 --ignore-preflight-errors 'NumCPU'
 
+mkdir -p $HOME/.kube
+sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+sudo sh -c "KUBECONFIG=/etc/kubernetes/admin.conf kubectl apply -f https://cloud.weave.works/k8s/net?k8s-version=v1.24.3"
+sudo sh -c "KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes -A -o wide"
 
 # On worker node:
 
-sudo kubeadm join 192.168.122.214:6443 --token pif8ga.r7fph75gtmt5q3o2 \
-        --discovery-token-ca-cert-hash sha256:9e1693d46407d8ac60d2e93933c47528af8de624347fe39cf34a861ab3d16f0e
+sudo kubeadm join 192.168.122.29:6443 --token b19ubu.h7ultfscvupdu2j5 \
+        --discovery-token-ca-cert-hash sha256:649187d6f0680d3b464bd62e8195807446abfad2aeff673be6ad86348866cbdc
 
 ```
 
