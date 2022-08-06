@@ -27,7 +27,7 @@ sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
-# On CentOS Stream 8: dnf remove -y podman
+# On CentOS Stream 8: sudo dnf remove -y podman
 
 sudo dnf install -y containerd.io
 
