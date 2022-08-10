@@ -1,7 +1,7 @@
 # kubeadm on CentOS Stream
 
+- Tested with success on CentOS Stream 8
 - Tested with success on CentOS Stream 9
-- Failed on CentOS Stream 8
 
 ```bash
 sudo dnf install -y yum-utils
