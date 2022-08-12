@@ -39,8 +39,8 @@ sudo sysctl --system
 sudo swapoff -a
 
 
-# On control-plane node:
-sudo kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address=192.168.122.252
+# On controlplane:
+sudo kubeadm init --pod-network-cidr 10.244.0.0/16 --ignore-preflight-errors 'NumCPU'
 
 mkdir -p $HOME/.kube
 sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -49,10 +49,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 sudo sh -c "KUBECONFIG=/etc/kubernetes/admin.conf kubectl apply -f https://cloud.weave.works/k8s/net?k8s-version=v1.24.3"
 sudo sh -c "KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes -A -o wide"
 
+Copy the "kubeadm join" instructions as they will be used on the worker node.
 
-# On worker node
-sudo kubeadm join 192.168.122.189:6443 --token sf3ad4.5reruio87setzc25 \
-        --discovery-token-ca-cert-hash sha256:9d476ffc8cd6553dc8223db8113d9b94f7fc3a8e58cb120a9acf5a39bfa6d94b
+# On worker node:
+
+sudo kubeadm join ......<instructions>
 
 ```
 
