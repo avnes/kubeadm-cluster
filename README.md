@@ -12,6 +12,8 @@ Install a kubeadm cluster
 
 ## Run instructions
 
+WIP: This is still work in progress. Use the manual steps in [CentOS.md](CentOS.md) or [Ubuntu.md](Ubuntu.md) for now.
+
 ```bash
 bin/01_run_ansible.sh
 ```
